@@ -1,0 +1,32 @@
+@media screen and (min-width: 1200px){
+  #main{
+margin-left: 275px;
+
+  }
+}
+
+#navbar-lading-ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ffff;
+}
+
+#navbar-lading-ul li { 
+  float: left;
+}
+
+#navbar-lading-ul li p{
+  display: block;
+  color:#151515;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+#navbar-lading-ul li p:hover{
+  background-color: #6168FF;
+  font-weight: bold;
+  color:white
+}
