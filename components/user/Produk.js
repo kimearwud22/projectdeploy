@@ -54,10 +54,10 @@ export default function Produk() {
         .then((res) => {
           if (res.data) {
             toast.success("Berhasil, Lanjut Checkout");
-            router.push("/ladingpage/cart?state=unconfirmed");
+            router.push("/order?state=unconfirmed");
           } else {
             toast.success("Berhasil, Lanjut Checkout");
-            router.push("/ladingpage/cart?state=unconfirmed");
+            router.push("/order?state=unconfirmed");
           }
         })
         .catch((err) => {

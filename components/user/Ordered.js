@@ -13,6 +13,7 @@ export default function OrderCart() {
   const [total, setTotal] = useState(0);
   const [addres, setAddres] = useState("");
   const [phone, setPhone] = useState("");
+  const [date, setDate] = useState("");
   const [state, setState] = useState("unconfirmed");
   const router = useRouter()
 
@@ -42,6 +43,7 @@ export default function OrderCart() {
     setName("");
     setAddres("");
     setPhone("");
+    setDate("");
     setData([]);
   };
 
@@ -53,6 +55,7 @@ export default function OrderCart() {
         name: name,
         addres: addres,
         phone: phone,
+        date: date,
       }),
       headers: {
         "Content-Type": "application/json",
@@ -109,69 +112,8 @@ export default function OrderCart() {
               <div className="card">
                 <div className="card-body p-4">
                   <div className="row">
-                    <div className="col-lg-7">
-                      <h5 className="mb-3">
-                        <a href="#!" className="text-body">
-                          <i className="fas fa-long-arrow-alt-left me-2" />
-                          Checkout
-                        </a>
-                      </h5>
-                      {/* <h6 className="mb-4">
-                        Status : {state}
-                      </h6> */}
-                      <hr />
-                      <div className="d-flex justify-content-between align-items-center mb-4">
-                        <div>
-                          <p className="mb-1">Isikan Data Pemesan</p>
-                          {/* <p className="mb-0">Kamu memiliki {data.length} Barang</p> */}
-                        </div>
-                        <div>
-                          <p className="mb-0">
-                            <span className="text-muted"></span>{" "}
-                            <a href="#!" className="text-body">
-                              <i className="fas fa-angle-down mt-1" /> 
-                            </a>
-                          </p>
-                        </div>
-                      </div>
-                      <div className="card mb-3">
-                        <div className="card-body">
-                        {data.length > 0 ? data.map((ord, index) => (
-                          <div className="d-flex justify-content-between" key={index}>
-                            <div className="d-flex flex-row align-items-center">
-                              <div>
-                                <img
-                                  src={ord.product.image}
-                                  className="img-fluid rounded-3 mr-3"
-                                  alt="Shopping item"
-                                  style={{ width: 65 }}
-                                />
-                              </div>
-                              <div className="ms-3">
-                                <h5>{ord.product.name}</h5>
-                                <p className="small mb-0">{ord.product.desc}</p>
-                              </div>
-                            </div>
-                            <div className="d-flex flex-row align-items-center">
-                              <div style={{ width: 130 }}>
-                                <h5 className="mb-0">{ord.product.price}</h5>
-                              </div>
-                              <div className="d-flex align-items-center btn btn-outline-dark">
-                                <a href="#!" className="text-primary " onClick={(e) => handleDelete(e, ord.id)}>
-                                  X
-                                </a>
-                                </div>
-                            </div>
-                          </div>
-                        )) : 
-                        <div className="text-center">
-                          <a href="https://wa.me/+6287851772114" className='btn btn-success' target="_blank">Hubungi Admin</a>
-                        </div>}
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-lg-5">
-                      <div className="card bg-primary text-white rounded-3">
+                  <div className="col-lg-5">
+                      <div className="card bg-success text-white rounded-3">
                         <div className="card-body">
                           <div className="d-flex justify-content-between align-items-center mb-4">
                             <h5 className="mb-0">Data Pemesan</h5>
@@ -225,6 +167,20 @@ export default function OrderCart() {
                             </div>
                             <div className="form-outline form-white mb-4">
                               <label className="form-label" htmlFor="typeText">
+                                Janji Temu 
+                              </label>
+                              <input
+                                type="date"
+                                id="typeText"
+                                className="form-control form-control-lg"
+                                placeholder="08xxxxxxxxxx"
+                                value={date}
+                                required
+                                onChange={(e) => setDate(e.target.value)}
+                              />
+                            </div>
+                            <div className="form-outline form-white mb-4">
+                              <label className="form-label" htmlFor="typeText">
                                 Alamat
                               </label>
                               <input
@@ -241,12 +197,12 @@ export default function OrderCart() {
                             {/* <input type="hidden" name="id" value={data.id} /> */}
                             <button
                             type="submit"
-                            className="btn btn-info btn-block btn-lg"
+                            className="btn btn-secondary btn-block btn-lg"
 
                           >
                             <div className="">
                               <span>
-                                Beli Sekarang
+                                Confirm
                               </span>
                             </div>
                           </button>
@@ -264,6 +220,68 @@ export default function OrderCart() {
                             <p className="mb-2">Total</p>
                             <p className="mb-2">{total}</p>
                           </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-lg-7">
+                      <h5 className="mb-3">
+                        <a href="#!" className="text-body">
+                          <i className="fas fa-long-arrow-alt-left me-2" />
+                          Konfirmasi  
+                        </a>
+                      </h5>
+                      {/* <h6 className="mb-4">
+                        Status : {state}
+                      </h6> */}
+                      <hr />
+                      <div className="d-flex justify-content-between align-items-center mb-4">
+                        <div>
+                          <p className="mb-1">Isikan Data Pemesan</p>
+                          {/* <p className="mb-0">Kamu memiliki {data.length} Barang</p> */}
+                        </div>
+                        <div>
+                          <p className="mb-0">
+                            <span className="text-muted"></span>{" "}
+                            <a href="#!" className="text-body">
+                              <i className="fas fa-angle-down mt-1" /> 
+                            </a>
+                          </p>
+                        </div>
+                      </div>
+                      <div className="card mb-3 bg-success text-white">
+                        <div className="card-body">
+                        {data.length > 0 ? data.map((ord, index) => (
+                          <div className="d-flex justify-content-between" key={index}>
+                            <div className="d-flex flex-row align-items-center">
+                              <div>
+                                <img
+                                  src={ord.product.image}
+                                  className="img-fluid rounded-3 mr-3"
+                                  alt="Shopping item"
+                                  style={{ width: 65 }}
+                                />
+                              </div>
+                              <div className="ms-3">
+                                <h5>{ord.product.name}</h5>
+                                <p className="small mb-0">{ord.product.desc}</p>
+                              </div>
+                            </div>
+                            <div className="d-flex flex-row align-items-center">
+                              <div style={{ width: 130 }}>
+                                <h5 className="mb-0">{ord.product.price}</h5>
+                              </div>
+                              <div className="d-flex align-items-center btn btn-outline-dark">
+                                <a href="#!" className="text-white " onClick={(e) => handleDelete(e, ord.id)}>
+                                  X
+                                </a>
+                                </div>
+                            </div>
+                          </div>
+                        )) : 
+                        <div className="text-center">
+                          <a href="https://wa.me/+6287851772114" className='btn btn-success' target="_blank">Hubungi Admin</a>
+                          <a href="/" className='btn btn-primary' target="_blank">Kembali</a>
+                        </div>}
                         </div>
                       </div>
                     </div>

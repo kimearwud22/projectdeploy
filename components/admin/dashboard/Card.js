@@ -35,7 +35,7 @@ export default function Card() {
                     <p className="text-sm mb-0 text-uppercase font-weight-bold">
                       Data Order
                     </p>
-                    <h5 className="font-weight-bolder">{dataCount.products}</h5>
+                    <h5 className="font-weight-bolder">{dataCount.orders}</h5>
                     <p className="mb-0">
                       <span className="text-success text-sm font-weight-bolder">
                         Data Order Pelanggan
