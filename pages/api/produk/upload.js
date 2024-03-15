@@ -1,41 +1,31 @@
-import { prisma } from "../../../libs/prisma.libs";
-import { cloudinary } from "../../../libs/cloudinary";
 
-export default async function handler(req, res) {
-    if (req.method === "POST") {
-        const { kode_product, name, price, desc, image } = req.body;
+import { prisma } from "@/libs/prisma.libs";
+import { upload } from "uploadthing";
 
-        // Check if image data is provided
-        if (!image) {
-            return res.status(400).json({ message: "No image provided" });
-        }
 
-        let uploadedResponse;
-        try {
-            // Upload the image to Cloudinary
-            uploadedResponse = await cloudinary.uploader.upload(image, {
-                upload_preset: "dev_setups", // Make sure this preset exists in your Cloudinary account
-            });
-        } catch (error) {
-            return res.status(500).json({ message: "Failed to upload image", error });
-        }
+export default async (req, res) => {
+  if (req.method === "POST") {
+    try {
+      const uploadResponse = await upload(req, {
+        secret: process.env.UPLOADTHING_SECRET,
+        appId: process.env.UPLOADTHING_APP_ID,
+      });
+      const { kode_product, name, price, desc } = uploadResponse.fields;
+      const image = uploadResponse.files.file[0].url;
 
-        let result;
-        try {
-            // Save the product details in the database
-            result = await prisma.product.create({
-                data: {
-                    kode_product,
-                    name,
-                    price,
-                    desc,
-                    image: uploadedResponse.url,
-                },
-            });
-        } catch (error) {
-            return res.status(500).json({ message: "Failed to save product", error });
-        }
+      const product = await prisma.product.create({
+        data: {
+          kode_product,
+          name,
+          price,
+          desc,
+          image,
+        },
+      });
 
-        res.json(result);
+      res.status(200).json({ message: "success", data: product });
+    } catch (error) {
+      res.status(500).json({ error: "Something went wrong" });
     }
-}
+  }
+};

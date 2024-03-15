@@ -10,6 +10,8 @@ import 'font-awesome/css/font-awesome.min.css'
 import 'react-toastify/dist/ReactToastify.min.css';
 import {ToastContainer} from 'react-toastify'
 
+import "@uploadthing/react/styles.css";
+
 import {SessionProvider} from 'next-auth/react'
 
 export default function App({ Component, pageProps }) {
