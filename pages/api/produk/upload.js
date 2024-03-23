@@ -1,31 +1,38 @@
+import { prisma } from "../../../libs/prisma.libs"
+import { getImage } from "../../../libs/formidable"
+import { uploadImage } from "../../../libs/cloudinary"
 
-import { prisma } from "@/libs/prisma.libs";
-import { upload } from "uploadthing";
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
 
-
-export default async (req, res) => {
+export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const uploadResponse = await upload(req, {
-        secret: process.env.UPLOADTHING_SECRET,
-        appId: process.env.UPLOADTHING_APP_ID,
-      });
-      const { kode_product, name, price, desc } = uploadResponse.fields;
-      const image = uploadResponse.files.file[0].url;
+      const { fields, files } = await getImage(req);
 
+      // Memeriksa apakah file 'image' ada dalam 'files'
+      if (!files || !files.image || !files.image.path) {
+        throw new Error("No image file found");
+      }
+
+      const image = files.image.path;
+      const result = await uploadImage(image);
       const product = await prisma.product.create({
         data: {
-          kode_product,
-          name,
-          price,
-          desc,
-          image,
-        },
+          name: fields.name,
+          description: fields.description,
+          price: fields.price,
+          image: result.secure_url
+        }
       });
-
-      res.status(200).json({ message: "success", data: product });
+      res.status(201).json({ message: "Product created successfully!", data: product });
     } catch (error) {
-      res.status(500).json({ error: "Something went wrong" });
+      res.status(500).json({ message: error.message || "Error occurred! Please contact the admin for more information." });
     }
+  } else {
+    res.status(405).json({ message: "Method not allowed!" });
   }
-};
+}
