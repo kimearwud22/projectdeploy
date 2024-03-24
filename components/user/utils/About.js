@@ -5,7 +5,7 @@ export default function About() {
   return (
     <div className="bg-white mt-0">
       <div className="basic-1"> 
-      <UploadButton
+      {/* <UploadButton
         endpoint="productImage"
         onClientUploadComplete={(res) => {
           // Do something with the response
@@ -16,7 +16,7 @@ export default function About() {
           // Do something with the error.
           alert(`ERROR! ${error.message}`);
         }}
-      />
+      /> */}
       </div>
       <div className="basic-2 ">
         <div className="container">
