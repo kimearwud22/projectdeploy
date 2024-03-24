@@ -6,7 +6,7 @@ import multer from "multer";
 import { promises as fs } from "fs";
 
 const storage = multer.diskStorage({
-    destination: join(process.cwd(), "public/uploads"),
+    destination: join(process.cwd(), "public"),
     filename: (req, file, cb) => {
         cb(null, `${file.fieldname}-${Date.now()}${file.originalname}`);
     },
@@ -27,7 +27,7 @@ export default async (req, res) => {
                 return res.status(400).json({ error: err.message });
             }
             const { kode_product, name, price, desc } = req.body;
-            const image = req.file ? `/uploads/${req.file.filename}` : req.body.image;
+            const image = req.file ? `/${req.file.filename}` : req.body.image;
             const product = await prisma.product.create({
                 data: {
                     kode_product,
