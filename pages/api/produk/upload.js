@@ -1,38 +1,24 @@
+// upload image in cloudinary
 import { prisma } from "../../../libs/prisma.libs"
-import { getImage } from "../../../libs/formidable"
-import { uploadImage } from "../../../libs/cloudinary"
-
-export const config = {
-  api: {
-    bodyParser: false,
-  },
-};
 
 export default async function handler(req, res) {
   if (req.method === "POST") {
     try {
-      const { fields, files } = await getImage(req);
-
-      // Memeriksa apakah file 'image' ada dalam 'files'
-      if (!files || !files.image || !files.image.path) {
-        throw new Error("No image file found");
-      }
-
-      const image = files.image.path;
-      const result = await uploadImage(image);
-      const product = await prisma.product.create({
+      const { name, price, desc, image, kode_product } = req.body;
+      const result = await prisma.product.create({
         data: {
-          name: fields.name,
-          description: fields.description,
-          price: fields.price,
-          image: result.secure_url
-        }
+          name,
+          price,
+          desc,
+          image,
+          kode_product,
+        },
       });
-      res.status(201).json({ message: "Product created successfully!", data: product });
+      res.status(200).json({ data: result });
     } catch (error) {
-      res.status(500).json({ message: error.message || "Error occurred! Please contact the admin for more information." });
+      res.status(400).json({ error: error.message });
     }
   } else {
-    res.status(405).json({ message: "Method not allowed!" });
+    res.status(405).json({ error: "Method not allowed" });
   }
 }

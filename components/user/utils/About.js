@@ -1,22 +1,18 @@
 import React from "react";
-import { UploadButton, UploadDropzone, Uploader } from "@/libs/uploadthing";
+// import {CldUploadButton} from 'next-cloudinary';
 
 export default function About() {
   return (
     <div className="bg-white mt-0">
       <div className="basic-1"> 
-      {/* <UploadButton
-        endpoint="productImage"
-        onClientUploadComplete={(res) => {
-          // Do something with the response
-          console.log("Files: ", res);
-          alert("Upload Completed");
-        }}
-        onUploadError={(error) => {
-          // Do something with the error.
-          alert(`ERROR! ${error.message}`);
-        }}
-      /> */}
+      {/* <CldUploadButton
+        options={{ multiple: true }}
+        uploadPreset={process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME}
+      >
+        <span>
+          Upload
+        </span>
+      </CldUploadButton> */}
       </div>
       <div className="basic-2 ">
         <div className="container">
