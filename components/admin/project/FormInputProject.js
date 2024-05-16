@@ -2,6 +2,7 @@ import React from "react";
 import {useState, useEffect} from "react";
 import {toast} from "react-toastify";
 import { useRouter } from "next/router";
+import useSWR from "swr";
 
 export default function FormInputProject() {
   const [title, setTitle] = useState("");
@@ -13,28 +14,36 @@ export default function FormInputProject() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);
+  const [uploading, setUploading] = useState(false);
+  const [createObjectUrl, setCreateObjectUrl] = useState(null);
 
   const router = useRouter();
-
-  const handleUpload = (event) => {
-    setImage(event.target.files[0]);
-    try{
+  const handleUpload = async (event) => {
+    event.preventDefault();
+    setUploading(true);
+    try {
       if (!event.target.files || event.target.files.length === 0) {
         throw new Error("Pilih file untuk diunggah.");
-    }
-    const file = event.target.files[0];
-    const fileExt = file.name.split(".").pop();
-    setFilename(file.name);
-    console.log(fileExt);
-    const parse = Papa.parse(file, {
-        header: true,
-        skipEmptyLines: true,
-        transformHeader: (header) => header.toLowerCase().replace(/\W/g, "_")
-    });
-    console.log(parse);
-    }
-    catch (error) {
+      }
+      const file = event.target.files[0];
+      const fileExt = file.name.split(".").pop();
+      setFilename(file.name);
+      const data = new FormData();
+      data.append("file", file);
+      data.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME);
+      const res = await fetch("https://api.cloudinary.com/v1_1/dkjialnw3/image/upload", {
+        method: "POST",
+        body: data,
+      });
+      const result = await res.json();
+      console.log(result);
+      setImage(result.secure_url);
+      setCreateObjectUrl(URL.createObjectURL(file));
+      setUploading(false);
+    } catch (error) {
       console.log(error);
+      setUploading(false);
+      setError(error);
     }
   }
 
@@ -63,41 +72,38 @@ export default function FormInputProject() {
   const handleAddProject = (event) => {
     event.preventDefault();
     setLoading(true);
-    const data = new FormData();
-    data.append("title", title);
-    data.append("content", content);
-    data.append("image", image);
-    data.append("date", date);
-    data.append("authorId", authorId);
-
-    fetch("/api/post/create", {
-      method: "POST",
-      body: data,
-    })
-
-      .then((res) => res.json())
-
-      .then((res) => {
-        if (!res.success) {
-          throw new Error(res.error.message);
-        }
+    try{
+      const data = {
+        title, content, image, date, authorId
+      };
+      const res = fetch("/api/project/create", {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (res) {
         toast.success("Project berhasil ditambahkan");
         setTitle("");
         setContent("");
         setImage("");
         setDate("");
         setAuthorId("");
+        setFilename("Choose File");
         router.push("/admin/project");
+        window.location.reload();
+      } else {
+        toast.error("Gagal menambahkan project");
       }
-        
-        )
-      .catch((err) => {
-        console.log(err);
-        toast.error(err.message);
-        router.push("/admin/project");
-      }
-          
-          );
+      setLoading(false);
+
+    } 
+    catch (error) {
+      console.log(error);
+      setLoading(false);
+      setError(error);
+    }
   }
 
   useEffect(() => {
@@ -112,6 +118,7 @@ export default function FormInputProject() {
           <div className="row">
             <div className="col-md-6">
               <div className="form-group">
+              <img src={createObjectUrl} alt="preview" style={{width: "30px", height:"20px"}} />
                 <label className="form-control-label text-white fs-6">
                   Masukkan File Gambar/Foto
                 </label>

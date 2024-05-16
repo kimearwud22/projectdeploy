@@ -16,7 +16,7 @@ const Navbar = () => {
   const [state, setState] = useState("unconfirmed");
 
   const handleOrder = () => {
-    fetch("/api/order/getOrder?state=uncormirmed", {
+    fetch("/api/order/notif?state=uncormirmed", {
       method: "GET",
     })
       .then((res) => res.json())

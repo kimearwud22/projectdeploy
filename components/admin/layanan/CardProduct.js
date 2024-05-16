@@ -36,6 +36,7 @@ export default function CardProduct() {
       .then((res) => {
           if (res.data) {
               toast.success("Produk berhasil dihapus");
+              window.location.reload();
               handleProduct();
           } else {
               toast.error("Gagal menghapus produk");

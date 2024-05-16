@@ -35,6 +35,7 @@ export default function TabelPemesanan() {
       .then((res) => {
         if (res.data) {
           toast.success("Berhasil menghapus pemesanan");
+          window.location.reload();
         } else {
           toast.error("Gagal menghapus pemesanan");
         }
@@ -62,6 +63,7 @@ export default function TabelPemesanan() {
       if (res.data) {
         toast.success("Order berhasil dikonfirmasi");
         handleOrder();
+        window.location.reload();
       } else {
         toast.error("Order gagal dikonfirmasi");
       }

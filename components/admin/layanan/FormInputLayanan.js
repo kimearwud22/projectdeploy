@@ -122,6 +122,7 @@ export default function FormInputLayanan() {
       const result = await res.json();
       if (res.status === 200) {
         toast.success("Berhasil menambahkan produk");
+        window.location.reload();
         router.push("/admin/layanan");
       } else {
         toast.error("Gagal menambahkan produk");
