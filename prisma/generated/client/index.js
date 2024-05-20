@@ -32,11 +32,11 @@ exports.$Enums = {}
 
 /**
  * Prisma Client JS version: 5.9.1
- * Query Engine version: 23fdc5965b1e05fc54e5f26ed3de66776b93de64
+ * Query Engine version: e9771e62de70f79a5e1c604a2d7c8e2a0a874b48
  */
 Prisma.prismaVersion = {
   client: "5.9.1",
-  engine: "23fdc5965b1e05fc54e5f26ed3de66776b93de64"
+  engine: "e9771e62de70f79a5e1c604a2d7c8e2a0a874b48"
 }
 
 Prisma.PrismaClientKnownRequestError = PrismaClientKnownRequestError;
@@ -177,12 +177,11 @@ const config = {
   },
   "relativePath": "../..",
   "clientVersion": "5.9.1",
-  "engineVersion": "23fdc5965b1e05fc54e5f26ed3de66776b93de64",
+  "engineVersion": "e9771e62de70f79a5e1c604a2d7c8e2a0a874b48",
   "datasourceNames": [
     "db"
   ],
   "activeProvider": "mysql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
@@ -192,8 +191,7 @@ const config = {
     }
   },
   "inlineSchema": "Ly8gVGhpcyBpcyB5b3VyIFByaXNtYSBzY2hlbWEgZmlsZSwNCi8vIGxlYXJuIG1vcmUgYWJvdXQgaXQgaW4gdGhlIGRvY3M6IGh0dHBzOi8vcHJpcy5seS9kL3ByaXNtYS1zY2hlbWENCg0KZ2VuZXJhdG9yIGNsaWVudCB7DQogIHByb3ZpZGVyID0gInByaXNtYS1jbGllbnQtanMiDQogIG91dHB1dCAgID0gIi4vZ2VuZXJhdGVkL2NsaWVudCINCn0NCg0KZGF0YXNvdXJjZSBkYiB7DQogIHByb3ZpZGVyID0gIm15c3FsIg0KICB1cmwgICAgICA9IGVudigiREFUQUJBU0VfVVJMIikNCn0NCg0KbW9kZWwgVXNlciB7DQogIGlkICAgICAgICBJbnQgICAgICBAaWQgQGRlZmF1bHQoYXV0b2luY3JlbWVudCgpKQ0KICBuYW1lICAgICAgU3RyaW5nPw0KICB1c2VybmFtZSAgU3RyaW5nICAgQHVuaXF1ZShtYXA6ICJVc2VyX3VzZXJuYW1lX2tleSIpDQogIHBhc3N3b3JkICBTdHJpbmcNCiAgcG9zdHMgICAgIFBvc3RbXQ0KfQ0KDQptb2RlbCBQcm9kdWN0IHsNCiAgaWQgICAgSW50ICAgICBAaWQgQGRlZmF1bHQoYXV0b2luY3JlbWVudCgpKQ0KICBuYW1lICBTdHJpbmcNCiAga29kZV9wcm9kdWN0IFN0cmluZz8NCiAgcHJpY2UgU3RyaW5nPw0KICBkZXNjICBTdHJpbmc/DQogIGltYWdlIFN0cmluZw0KICBvcmRlciBPcmRlcltdDQp9DQoNCm1vZGVsIE9yZGVyIHsNCiAgaWQgICAgICAgIEludCAgICAgQGlkIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkNCiAgbmFtZSAgICAgIFN0cmluZz8NCiAgZGF0ZSAgICAgIFN0cmluZw0KICB0b3RhbCAgICAgRmxvYXQ/DQogIGVtYWlsICAgICBTdHJpbmc/DQogIGFkZHJlcyAgICBTdHJpbmc/DQogIHBob25lICAgICBTdHJpbmc/DQogIHByb2R1Y3QgICBQcm9kdWN0IEByZWxhdGlvbihmaWVsZHM6IFtwcm9kdWN0SWRdLCByZWZlcmVuY2VzOiBbaWRdKQ0KICBwcm9kdWN0SWQgSW50DQogIHN0YXRlICAgICBTdHJpbmc/IEBkZWZhdWx0KCJ1bmNvbmZpcm1lZCIpDQp9DQoNCm1vZGVsIFBvc3Qgew0KICBpZCAgICAgICAgSW50ICAgICAgQGlkIEBkZWZhdWx0KGF1dG9pbmNyZW1lbnQoKSkNCiAgdGl0bGUgICAgIFN0cmluZw0KICBjb250ZW50ICAgU3RyaW5nICBAZGIuVGV4dA0KICBpbWFnZSAgICAgU3RyaW5nDQogIGRhdGUgICAgICBTdHJpbmcNCiAgY3JlYXRlZEF0IERhdGVUaW1lIEBkZWZhdWx0KG5vdygpKQ0KICB1cGRhdGVkQXQgRGF0ZVRpbWUgQHVwZGF0ZWRBdA0KICBhdXRob3IgICAgVXNlciAgICAgQHJlbGF0aW9uKGZpZWxkczogW2F1dGhvcklkXSwgcmVmZXJlbmNlczogW2lkXSkNCiAgYXV0aG9ySWQgIEludA0KfQ0KDQo=",
-  "inlineSchemaHash": "42dfc34e54b79a1aadb920b49eae5fbc2584dfbfd6f03a6a71f070837d19b53b",
-  "noEngine": false
+  "inlineSchemaHash": "42dfc34e54b79a1aadb920b49eae5fbc2584dfbfd6f03a6a71f070837d19b53b"
 }
 
 const fs = require('fs')
