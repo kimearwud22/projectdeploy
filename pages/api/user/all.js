@@ -1,4 +1,6 @@
-import { prisma } from "../../../libs/prisma.libs";
+import { PrismaClient } from "@prisma/client";
+
+const prisma = new PrismaClient();
 
 export default function handler(req, res){
   prisma.user.findMany().then((user) => {
