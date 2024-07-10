@@ -10,6 +10,7 @@ import About from "@/components/user/utils/About";
 import Produk from "@/components/user/Produk";
 import PostProject from "@/components/user/Project";
 
+
 const ChatBot = dynamic(() => import("@/components/chatbot"), { ssr: false });
 
 export default function Home() { 

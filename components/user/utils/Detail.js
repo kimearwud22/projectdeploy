@@ -19,7 +19,7 @@ export default function Detail() {
               <div className="text-container">
                 <h2>
                   <span>Spesifikasi Alamat</span>
-                  <br /> for your small business
+                  <br /> Beralamat di Banyuwangi
                 </h2>
                 <p>
                   Maecenas fringilla quam posuere, pellentesque est nec, gravida

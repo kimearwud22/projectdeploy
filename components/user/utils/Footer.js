@@ -12,32 +12,29 @@ export default function Footer() {
           <div className="social-container">
             <span className="fa-stack">
               <a href="#your-link">
-                <i className="fas fa-circle fa-stack-2x" />
-                <i className="fab fa-facebook-f fa-stack-1x" />
+                {/* <i className="fas fa-circle fa-stack-2x" />
+                <i className="fab fa-facebook-f fa-stack-1x" /> */}
+                <img src="/assets/img/instagram.svg" alt="Coffee Icon" />
               </a>
             </span>
             <span className="fa-stack">
               <a href="#your-link">
-                <i className="fas fa-circle fa-stack-2x" />
-                <i className="fab fa-twitter fa-stack-1x" />
+              <img src="/assets/img/wa.svg" alt="Coffee Icon" />
               </a>
             </span>
             <span className="fa-stack">
               <a href="#your-link">
-                <i className="fas fa-circle fa-stack-2x" />
-                <i className="fab fa-pinterest-p fa-stack-1x" />
+              <img src="/assets/img/tiktok.svg" alt="Coffee Icon" />
               </a>
             </span>
             <span className="fa-stack">
               <a href="#your-link">
-                <i className="fas fa-circle fa-stack-2x" />
-                <i className="fab fa-instagram fa-stack-1x" />
+              <img src="/assets/img/linkedin.svg" alt="Coffee Icon" />
               </a>
             </span>
             <span className="fa-stack">
               <a href="#your-link">
-                <i className="fas fa-circle fa-stack-2x" />
-                <i className="fab fa-youtube fa-stack-1x" />
+              <img src="/assets/img/twitter.svg" alt="Coffee Icon" />
               </a>
             </span>
           </div> 

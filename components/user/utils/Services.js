@@ -1,5 +1,6 @@
 import React from "react";
 
+
 export default function Services() {
   return (
     <div>
@@ -10,54 +11,54 @@ export default function Services() {
             <hr/>
             <div className="row">
               <div className="card col-lg-4">
-                <div className="card-icon blue">
-                  <span className="far fa-file-alt" />
+                <div className="card-icon red"> 
+                <img src="/assets/img/video-camera.svg" alt="Coffee Icon" sizes="100px"/>
+                  {/* <span className="far fa-file-alt" /> */}
                 </div>
                 <div className="card-body">
-                  <h5 className="card-title">Advertising</h5>
+                  <h5 className="card-title">Videografi</h5>
                   <p>
-                    Lorem ipsum dolor sit amet, consect adipiscing elit nulla id
-                    nisl blah nor
+                  Jasa videografi mencakup layanan pembuatan video, termasuk konsep dan perencanaan, penulisan naskah, pengambilan gambar, pengarahan selama syuting, editing video, penambahan efek visual, pengolahan audio, dan distribusi video melalui berbagai platform seperti YouTube, media sosial, atau situs web. Jenis videografi yang ditawarkan meliputi iklan, dokumentasi acara, video musik, dan film pendek.
                   </p>
-                  <ul className="list-unstyled li-space-lg">
+                  {/* <ul className="list-unstyled li-space-lg">
                     <li className="d-flex">
                       <i className="fas fa-check" />
                       <div className="flex-grow-1">
-                        Ut tincidunt vitae enim non vehi
+                      Pre-Produksi:
                       </div>
                     </li>
                     <li className="d-flex">
                       <i className="fas fa-check" />
                       <div className="flex-grow-1">
-                        Phasellus vitae metus in felis
+                      Produksi:
                       </div>
                     </li>
                     <li className="d-flex">
                       <i className="fas fa-check" />
                       <div className="flex-grow-1">
-                        Fusce pulvinar eu mi ac molestie
+                      Pasca-Produksi:
                       </div>
                     </li>
                     <li className="d-flex">
                       <i className="fas fa-check" />
                       <div className="flex-grow-1">
-                        Curabitur consequat nisl eget
+                      Distribusi:
                       </div>
                     </li>
-                  </ul>
+                  </ul> */}
                 </div>
               </div>
               <div className="card col-lg-4">
                 <div className="card-icon yellow">
-                  <span className="fas fa-solar-panel" />
+                <img src="/assets/img/camera.svg" alt="Coffee Icon"/>
+                  {/* <span className="fas fa-solar-panel" /> */}
                 </div>
                 <div className="card-body">
                   <h5 className="card-title">Photograpy</h5>
                   <p>
-                    Nam eu erat tellused vivamus vitae sem in tortor pharetra
-                    vehicula orn
+                  Jasa fotografi mencakup layanan pengambilan dan pengeditan gambar, termasuk konsep dan perencanaan, pemilihan lokasi, pengambilan foto, pengarahan subjek, editing, retouching, pengolahan akhir, serta distribusi melalui cetakan, album foto, atau publikasi online. Jenis fotografi yang ditawarkan meliputi pernikahan, potret, komersial, produk, acara, fashion, dan jurnalistik.
                   </p>
-                  <ul className="list-unstyled li-space-lg">
+                  {/* <ul className="list-unstyled li-space-lg">
                     <li className="d-flex">
                       <i className="fas fa-check" />
                       <div className="flex-grow-1">
@@ -82,20 +83,19 @@ export default function Services() {
                         Lacus fermentum tincidunt
                       </div>
                     </li>
-                  </ul>
+                  </ul> */}
                 </div>
               </div>
               <div className="card col-lg-4">
                 <div className="card-icon red">
-                  <span className="fas fa-gift" />
+                <img src="/assets/img/sosial-media.svg" alt="Coffee Icon" />
                 </div>
                 <div className="card-body">
-                  <h5 className="card-title">Content Promotion</h5>
+                  <h5 className="card-title">Management Solial Media</h5>
                   <p>
-                    Nullam lobortis porta diam, vitae dictum metus placerat
-                    luctus bora
+                  Manajemen media sosial mencakup pembuatan strategi konten, pembuatan dan desain postingan, penjadwalan dan penerbitan konten, interaksi dengan pengikut, analisis kinerja, dan penyesuaian strategi berdasarkan data analitik. Layanan ini membantu meningkatkan keterlibatan, membangun merek, dan mencapai tujuan pemasaran melalui platform seperti Instagram, Facebook, Twitter, dan LinkedIn.
                   </p>
-                  <ul className="list-unstyled li-space-lg">
+                  {/* <ul className="list-unstyled li-space-lg">
                     <li className="d-flex">
                       <i className="fas fa-check" />
                       <div className="flex-grow-1">
@@ -120,7 +120,7 @@ export default function Services() {
                         Cursus lacus interdum sollicdn
                       </div>
                     </li>
-                  </ul>
+                  </ul> */}
                 </div>
               </div>
             </div>{" "}

@@ -14,7 +14,7 @@ export default function About() {
         </span>
       </CldUploadButton> */}
       </div>
-      <div className="basic-2 ">
+      <div className="basic-2">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">
@@ -39,7 +39,6 @@ export default function About() {
                     <p className="text-white p-large">Misi</p>
                     <p className="text-white p-large" style={{textAlign:"justify"}}>Menjadi Perusahaan Yang Profesional Yang Mengedepankan Kreatifitas, Inovasi, Solusi Pemasaran Dan Penjualan Serta Mengikuti Perkembangan Teknologi.</p>
                     </div>
-                  
                 </div>
               </div>
             </div>
