@@ -63,13 +63,13 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="">
-                <Link href="/link">
-                  <p className="my-auto rounded-3">About</p>
+                <Link href="#about">
+                  <p className="my-auto rounded-3">Tentang Kami</p>
                 </Link>
               </li>
               <li className="">
-                <Link href="/link">
-                  <p className="my-auto rounded-3">Layanan</p>
+                <Link href="#partner">
+                  <p className="my-auto rounded-3">Partner</p>
                 </Link>
               </li>
               <li className="">
@@ -135,13 +135,13 @@ const Navbar = () => {
                 </Link>
               </li>
               <li className="">
-                <Link href="/link">
-                  <p className="my-auto rounded-3">About</p>
+                <Link href="#about">
+                  <p className="my-auto rounded-3">Tentang Kami</p>
                 </Link>
               </li>
               <li className="">
-                <Link href="/link">
-                  <p className="my-auto rounded-3">Layanan</p>
+                <Link href="#partner">
+                  <p className="my-auto rounded-3">Partner</p>
                 </Link>
               </li>
               <li className="">

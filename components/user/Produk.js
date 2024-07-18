@@ -79,8 +79,8 @@ export default function Produk() {
       <div className="product">
         <div className="container">
           <div className="row">
-            <div className="col-sm-8 offset-sm-2 text-center colorlib-heading">
-              <h2>Product</h2>
+            <div className="col-sm-8 offset-sm-2 text-center colorlib-heading mt-5 mb-4">
+              <h1>Product</h1>
             </div>
           </div>
           <div className="row">
@@ -91,15 +91,15 @@ export default function Produk() {
                     <a href="#" className="prod-img">
                       <img
                         src={prod.image}
-                        className="img-fluid"
+                        className="img-fluid mt-4 rounded"
                         alt="Free html5 bootstrap 4 template"
                         style={{ height: "200px" }}
                       />
                     </a>
-                    <div className="desc">
-                      <h2>
-                        <a href="#">{prod.name}</a>
-                      </h2>
+                    <div className="desc text-white mt-3">
+                      <h4 >
+                        <a href="#" className="text-white">{prod.name}</a>
+                      </h4>
                       {/* <label>Kode Produk : {prod.kode_product}</label> */}
                       <span className="price mb-3">
                         Rp.{prod.price}
@@ -107,7 +107,7 @@ export default function Produk() {
                       <br/>
                       <a
                         href
-                        className="btn btn-outline-dark ml-2 btn-sm"
+                        className="btn btn-danger mt-2 ml-2 btn-sm"
                         onClick={() => handleAddBuy(prod.id, prod.price)}
                       >
                         Checkout

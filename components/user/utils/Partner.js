@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Partner() {
   return ( 
-    <div className='bg-white'>  
+    <div className='bg-white' id='partner'>  
   <div className=" overflow-hidden">
     <h1 className='text-center pt-5 pb-3'>Partner Kami</h1>
     <div className="row ">

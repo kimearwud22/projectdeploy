@@ -14,7 +14,7 @@ export default function About() {
         </span>
       </CldUploadButton> */}
       </div>
-      <div className="basic-2">
+      <div className="basic-2" id="about">
         <div className="container">
           <div className="row">
             <div className="col-lg-12">

@@ -10,7 +10,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "^5.9.1",
+    "@prisma/client": "^5.16.2",
     "@uploadthing/react": "^6.4.0",
     "cloudinary": "^2.0.3",
     "dotenv": "^16.4.5",
@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^2.1.4",
-    "prisma": "^5.14.0"
+    "prisma": "^5.16.2"
   },
   "prisma": {
     "seed": "node prisma/seed.js"
