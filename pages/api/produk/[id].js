@@ -13,15 +13,16 @@ export default function handler(req, res) {
             res.status(400).json({ error })
         })
     } else if (req.method === 'PUT') {
-        const { name, price, image } = req.body
+        const { name,kode_product, price, image } = req.body
         prisma.product.update({
             where: {
                 id: parseInt(id)
             },
             data: {
-                name,
-                price,
-                image
+                name: name,
+                kode_product: kode_product,
+                price: price,
+                image: image
             }
         }).then((data) => {
             res.status(200).json({ data })

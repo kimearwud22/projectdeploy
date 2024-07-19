@@ -76,7 +76,8 @@ const [name, setName] = useState("");
         const json = await res.json()
         if(!res.ok) return toast.error(json.message)
         toast.success(json.message)
-        router.push("/admin/layanan")
+        // router.push("/admin/layanan")
+        console.log(json)
     } 
 
 

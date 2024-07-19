@@ -69,36 +69,64 @@ export default function FormInputProject() {
   };
 
 
-  const handleAddProject = (event) => {
+  // const handleAddProject = (event) => {
+  //   event.preventDefault();
+  //   setLoading(true);
+  //   try{
+  //     const data = {
+  //       title, content, image, date, authorId
+  //     };
+  //     const res = fetch("/api/post/create", {
+  //       method: "POST",
+  //       body: JSON.stringify(data),
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //     });
+  //     if (res) {
+  //       toast.success("Project berhasil ditambahkan");
+  //       setTitle("");
+  //       setContent("");
+  //       setImage("");
+  //       setDate("");
+  //       setAuthorId("");
+  //       setFilename("Choose File");
+  //       router.push("/admin/project");
+  //       window.location.reload();
+  //     } else {
+  //       toast.error("Gagal menambahkan project");
+  //     }
+  //     setLoading(false);
+
+  //   } 
+  //   catch (error) {
+  //     console.log(error);
+  //     setLoading(false);
+  //     setError(error);
+  //   }
+  // }
+  const handleAddProject = async (event) => {
     event.preventDefault();
     setLoading(true);
-    try{
-      const data = {
-        title, content, image, date, authorId
-      };
-      const res = fetch("/api/project/create", {
+    try {
+      const data = { title, content, image, date, authorId };
+      const res = await fetch("/api/post/create", {
         method: "POST",
-        body: JSON.stringify(data),
         headers: {
           "Content-Type": "application/json",
         },
+        body: JSON.stringify(data),
       });
-      if (res) {
-        toast.success("Project berhasil ditambahkan");
-        setTitle("");
-        setContent("");
-        setImage("");
-        setDate("");
-        setAuthorId("");
-        setFilename("Choose File");
-        router.push("/admin/project");
+      const result = await res.json();
+      if (res.status === 200) {
+        toast.success("Berhasil menambahkan Project");
         window.location.reload();
+        router.push("/admin/project");
       } else {
         toast.error("Gagal menambahkan project");
       }
       setLoading(false);
-
-    } 
+    }
     catch (error) {
       console.log(error);
       setLoading(false);
