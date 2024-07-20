@@ -81,7 +81,7 @@ export default function CardProject() {
                     {item.date}
                     </p>
                     <div>
-                    <Link href={`/admin/produk/edit?id=${item.id}`} className="btn btn-primary mb-0 me-2" type="button">
+                    <Link href={`/admin/project/edit?id=${item.id}&title=${item.title}&content=${item.content}&image=${item.image}&authorId=${item.authorId}&date=${item.date}`} className="btn btn-primary mb-0 me-2" type="button">
                     Edit
                   </Link>
                   <button className="btn btn-danger mb-0" type="button" onClick={() => handleDelete(item.id)}>

@@ -81,7 +81,7 @@ export default function CardProduct() {
                     {item.desc}
                     </p>
                     <div>
-                    <Link href={`/admin/produk/edit?id=${item.id}`} className="btn btn-primary mb-0 me-2" type="button">
+                    <Link href={`/admin/produk/edit?id=${item.id}&name=${item.name}&price=${item.price}&image=${item.image}&desc=${item.desc}&kode_product=${item.kode_product}`} className="btn btn-primary mb-0 me-2" type="button">
                     Edit
                   </Link>
                   <button className="btn btn-danger mb-0" type="button" onClick={() => handleDelete(item.id)}>

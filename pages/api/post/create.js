@@ -11,7 +11,7 @@ export default async function handler(req, res) {
           content,
           date,
           image,
-          authorId: parseInt(authorId),
+          authorId: parseInt(authorId)|| 'admin',
         },
       });
       res.status(200).json({ data: result });

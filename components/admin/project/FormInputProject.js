@@ -10,7 +10,7 @@ export default function FormInputProject() {
   const [image, setImage] = useState("");
   const [filename, setFilename] = useState("Choose File");
   const [date, setDate] = useState("");
-  const [authorId, setAuthorId] = useState("");
+  const [authorId, setAuthorId] = useState("admin");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [data, setData] = useState([]);

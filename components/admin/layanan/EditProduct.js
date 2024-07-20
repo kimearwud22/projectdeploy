@@ -5,85 +5,122 @@ import { useRouter } from "next/router";
 
 export default function EditLayanan() {
     const [data, setData] = useState([]);
-const [name, setName] = useState("");
-  const [price, setPrice] = useState("");
-  const [desc , setDesc] = useState("");
-  const [image, setImage] = useState("");
-  const [kode_product, setKodeProduct] = useState("");
+const [name_, setName] = useState("");
+  const [price_, setPrice] = useState("");
+  const [desc_ , setDesc] = useState("");
+  const [image_, setImage] = useState("");
+  const [kode_product_, setKodeProduct] = useState("");
   const [filename, setFilename] = useState("Choose File");
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const {id} = useRouter().query;
+  const [uploading, setUploading] = useState(false);
+  const [createObjectUrl, setCreateObjectUrl] = useState(null);
 
+
+  const resetForm = () => {
+    setName("");
+    setPrice("");
+    setDesc("");
+    setImage("");
+    setKodeProduct("");
+    setFilename("Choose File");
+  }
   const router = useRouter();
+  const {name, price, image, desc, kode_product, id} = router.query;
 
-  const handleUpload = (event) => {
-    setImage(event.target.files[0]);
-    try{
-      if (!event.target.files || event.target.files.length === 0) {
-        throw new Error("Pilih file untuk diunggah.");
+  useEffect(() => {
+    if(typeof name === "string"){
+      setName(name);
     }
-    const file = event.target.files[0];
-    const fileExt = file.name.split(".").pop();
-    setFilename(file.name);
-    console.log(fileExt);
-    const parse = Papa.parse(file, {
-        header: true,
-        skipEmptyLines: true,
-        transformHeader: (header) => header.toLowerCase().replace(/\W/g, "_")
-    });
-    console.log(parse);
+    if(typeof price === "string"){
+      setPrice(price);
     }
-    catch (error) {
+    if(typeof image === "string"){
+      setImage(image);
+    }
+    if(typeof desc === "string"){
+      setDesc(desc);
+    }
+    if(typeof kode_product === "string"){
+      setKodeProduct(kode_product);
+    }
+  }, [name, price, image, desc, kode_product]);
+
+  const handleUpload = async (event) => {
+    event.preventDefault();
+      setUploading(true);
+      try{
+        if(!e.target.files || e.target.files.length === 0){
+          console.error("No file selected");
+          return;
+        }
+        const file = e.target.files[0];
+        const fileExt = file.name.split(".").pop();
+        setFilename(file.name);
+        const data = new FormData();
+        data.append("file", file);
+        data.append("upload_preset", process.env.NEXT_PUBLIC_CLOUDINARY_PRESET_NAME);
+        const res = await fetch("https://api.cloudinary.com/v1_1/dkjialnw3/image/upload", {
+          method: "POST",
+          body: data,
+        });
+        const result = await res.json();
+        setImage(result.secure_url);
+        setImagePreview(URL.createObjectURL(file));
+        setCreateObjectUrl(URL.createObjectURL(file));
+        setUploading(false);
+        console.log(result.secure_url);
+      } catch (error) {
+        console.error(error);
+        setUploading(false);
+      }
+  
+    };
+
+  const handleEdit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    try {
+      const data = {
+        name: name_,
+        price: price_,
+        image: image_,
+        desc: desc_,
+        kode_product: kode_product_,
+      };
+      const res = await fetch(`/api/produk/update?id=${id}`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+      const result = await res.json();
+      if (result.status === "success") {
+        toast.success("Product berhasil diubah");
+        resetForm();
+        router.push("/admin/layanan");
+      } else {
+        toast.success("berhasil mengubah product");
+        console.log(result);
+        router.push("/admin/layanan");
+      }
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
       console.log(error);
+      setLoading(false);
+    } finally {
+      setLoading(false);
     }
   }
 
-  const handleEdit = async (id) => {
-    try{
-        const res = await fetch(`/api/produk/${id}`)
-        const json = await res.json()
-        setData(json.data)
-        setName(json.data.name)
-        setPrice(json.data.price)
-        setDesc(json.data.desc)
-        setKodeProduct(json.data.kode_product)
-        setImage(json.data.image)
-        setLoading(false)
-    } catch (error) {
-        console.log(error)
-    }
-    }
-
-    useEffect(() => {
-        if(id){
-            handleEdit(id)
-        }
-    }, [id])
-
-    const handleUpdateProduct = async (event) => {
-        event.preventDefault();
-        const formData = new FormData();
-        formData.append("name", name);
-        formData.append("price", price);
-        formData.append("desc", desc);
-        formData.append("image", image);
-        formData.append("kode_product", kode_product);
-        const res = await fetch(`/api/produk/${id}`, {
-            method: "PUT",
-            body: formData
-        })
-        const json = await res.json()
-        if(!res.ok) return toast.error(json.message)
-        toast.success(json.message)
-        // router.push("/admin/layanan")
-        console.log(json)
-    } 
+  
 
 
   return (
     <div>
-      <form onSubmit={handleUpdateProduct}>
+      <form onSubmit={handleEdit}>
         <div className="row">
           <div className="col-md-6">
             <div className="form-group">
@@ -102,7 +139,7 @@ const [name, setName] = useState("");
                 type="text"
                 className="form-control"
                 placeholder="Masukkan Nama Product"
-                value={kode_product}
+                value={kode_product_}
                 onChange={(event) => setKodeProduct(event.target.value)}
               />
             </div>
@@ -116,7 +153,7 @@ const [name, setName] = useState("");
                 type="text"
                 className="form-control"
                 placeholder="Masukkan Nama Product"
-                value={name}
+                value={name_}
                 onChange={(event) => setName(event.target.value)}
               />
             </div>
@@ -130,7 +167,7 @@ const [name, setName] = useState("");
                 type="text"
                 className="form-control"
                 placeholder="Masukkan Nama Product"
-                value={price}
+                value={price_}
                 onChange={(event) => setPrice(event.target.value)}
               />
             </div>
@@ -147,7 +184,7 @@ const [name, setName] = useState("");
                 rows={3}
                 defaultValue={""}
                 placeholder="Masukkan Deskripsi"
-                value={desc}
+                value={desc_}
                 onChange={(event) => setDesc(event.target.value)}
               />
             </div>
